@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Add Font Awesome for the like icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div id="playerWindow" class="player-window">
+            <img id="selectedImage" src="" alt="">
+            <h2 id="selectedTitle"></h2>
+            <audio id="audioPlayer" controls>
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="library">
+            <h2>Library</h2>
+            <ul>
+                {% for track in tracks %}
+                <li onclick="openPlayer('{{ track.name }}', '{{ track.file }}', '{{ track.image }}')">
+                    <img src="{{ url_for('static', filename='images/' ~ track.image) }}" alt="{{ track.name }}">
+                    <span>{{ track.name }}</span>
+                    <button onclick="toggleLike(this)" class="like-btn" data-liked="false">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function openPlayer(title, file, image) {
+            var selectedImage = document.getElementById('selectedImage');
+            var selectedTitle = document.getElementById('selectedTitle');
+            var audioPlayer = document.getElementById('audioPlayer');
+
+            selectedImage.src = "{{ url_for('static', filename='images/') }}" + image;
+            selectedTitle.innerText = title;
+            audioPlayer.src = "{{ url_for('static', filename='music/') }}" + file;
+
+            document.getElementById('playerWindow').style.display = "block";
+        }
+
+        function toggleLike(btn) {
+            var liked = btn.getAttribute('data-liked');
+            var songName = btn.parentElement.querySelector('span').innerText;
+
+            if (liked === 'true') {
+                btn.innerHTML = '<i class="far fa-heart"></i>';
+                btn.setAttribute('data-liked', 'false');
+            } else {
+                btn.innerHTML = '<i class="fas fa-heart" style="color: green;"></i>';
+                btn.setAttribute('data-liked', 'true');
+            }
+        }
+    </script>
+</body>
+</html>

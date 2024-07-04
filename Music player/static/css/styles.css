@@ -1,0 +1,137 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #000;
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #fff;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+}
+
+.player-window {
+    display: none;
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+}
+
+.player-window img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.player-window h2 {
+    color: #0d0c0c;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.player-window audio {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #444;
+    color: #070707;
+}
+
+/* Custom progress bar styles */
+.progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background-color: #272323;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: green;
+    width: 0%;
+}
+
+.library {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    bottom: 20px;
+    width: 200px;
+    overflow-y: auto;
+}
+
+.library h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+    color: #fff;
+}
+
+.library ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.library li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.library li img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.like-btn {
+    margin-left: auto;
+    background-color: transparent;
+    border: none; 
+}
+
+.like-btn:hover {
+    cursor: pointer;
+}
+
+.like-btn:focus {
+    outline: none;
+}
+
+.like-btn i {
+    color: #fff;
+    font-size: 24px;
+}
+
+.like-btn[data-liked="true"] i {
+    color: green;
+}
+#selectedTitle {
+    color: #fff; /* Add this line to set the color to white */
+}
+
+
